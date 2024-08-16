@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:notecraft_fe/utils/app_colors.dart';
+import 'package:notecraft_fe/view/widgets/single_note_viewer.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -6,11 +8,30 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: Container(
-          height: 100,
-          width: 200,
-          color: Colors.red,
+      appBar: AppBar(
+        title: const Center(
+          child: Text("Notes"),
+        ),
+      ),
+      body: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: ListView.separated(
+          itemBuilder: (context, index) {
+            return const SingleNoteViewer();
+          },
+          separatorBuilder: (context, index) => const Divider(),
+          itemCount: 2,
+        ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        backgroundColor: AppColors.violetColor,
+        onPressed: () {
+          print("button pressed");
+        },
+        tooltip: 'Increment',
+        child: const Icon(
+          Icons.add,
+          color: AppColors.white,
         ),
       ),
     );
