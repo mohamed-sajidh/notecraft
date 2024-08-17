@@ -3,11 +3,13 @@ const noteRoutes = require("./routes/noteRoutes");
 const app = express();
 const { connect } = require("./config/connection");
 const dotenv = require("dotenv");
+var cors = require('cors');
 
 dotenv.config();
 
 app.use(express.json());
 app.use(express.urlencoded());
+app.use(cors());
 
 connect();
 

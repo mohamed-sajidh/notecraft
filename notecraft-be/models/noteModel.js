@@ -49,6 +49,14 @@ const noteModel = () => {
           return now.getDate();
         },
       },
+      year: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        defaultValue: () => {
+          const now = new Date();
+          return now.getFullYear();
+        },
+      },
       createdAt: {
         type: DataTypes.DATE,
         defaultValue: DataTypes.NOW,

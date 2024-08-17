@@ -8,6 +8,7 @@ const {
 
 const addNote = async (req, res) => {
   try {
+    
     const newNote = await createNote(req.body);
     res.status(200).json({ success: true, newNote });
   } catch (error) {
