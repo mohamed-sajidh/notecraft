@@ -19,6 +19,36 @@ const noteModel = () => {
         type: DataTypes.STRING,
         allowNull: false,
       },
+      month: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        defaultValue: () => {
+          const months = [
+            "jan",
+            "feb",
+            "mar",
+            "apr",
+            "may",
+            "jun",
+            "jul",
+            "aug",
+            "sep",
+            "oct",
+            "nov",
+            "dec",
+          ];
+          const now = new Date();
+          return months[now.getMonth()];
+        },
+      },
+      date: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        defaultValue: () => { 
+          const now = new Date();
+          return now.getDate();
+        },
+      },
       createdAt: {
         type: DataTypes.DATE,
         defaultValue: DataTypes.NOW,

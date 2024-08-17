@@ -26,10 +26,6 @@ const getAllNotes = async (req, res) => {
 
 const getSingleNote = async (req, res) => {
   try {
-    console.log(
-      "--------------------------------------------------------------------"
-    );
-
     const note = await getNoteById(req.params.id);
     res.status(200).json({ success: true, note });
   } catch (error) {
