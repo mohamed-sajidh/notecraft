@@ -37,10 +37,10 @@ void addNote(BuildContext context) {
                     decoration: const InputDecoration(
                       border: InputBorder.none,
                       filled: true,
-                      fillColor: Color(0x40D9D9D9),
+                      fillColor: AppColors.textFieldFillColor,
                       enabledBorder: OutlineInputBorder(
                         borderSide: BorderSide(
-                          color: Color.fromARGB(255, 36, 77, 113),
+                          color: AppColors.violetColor,
                           width: 0.5,
                         ),
                       ),
@@ -61,10 +61,10 @@ void addNote(BuildContext context) {
                     decoration: const InputDecoration(
                       border: InputBorder.none,
                       filled: true,
-                      fillColor: Color(0x40D9D9D9),
+                      fillColor: AppColors.textFieldFillColor,
                       enabledBorder: OutlineInputBorder(
                         borderSide: BorderSide(
-                          color: Color.fromARGB(255, 36, 77, 113),
+                          color: AppColors.violetColor,
                           width: 0.5,
                         ),
                       ),

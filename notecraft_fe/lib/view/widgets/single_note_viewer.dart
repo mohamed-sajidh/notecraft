@@ -96,7 +96,6 @@ class SingleNoteViewer extends StatelessWidget {
                 constraints: const BoxConstraints(
                   maxWidth: 350,
                 ),
-                // color: Colors.red,
                 child: Text(
                   homeNotifier.notes[index].content,
                   style: const TextStyle(

@@ -7,4 +7,5 @@ class AppColors {
   static const black = Colors.black;
   static const blue = Colors.blue;
   static const red = Colors.red;
+  static const textFieldFillColor = Color(0x40D9D9D9);
 }

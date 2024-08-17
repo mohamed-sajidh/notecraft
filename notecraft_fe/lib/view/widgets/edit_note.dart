@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:notecraft_fe/controller/home_controller.dart';
 import 'package:notecraft_fe/utils/app_colors.dart';
-import 'package:notecraft_fe/view/widgets/success_snackbar.dart';
 import 'package:provider/provider.dart';
 
 final anFormKey = GlobalKey<FormState>();
@@ -39,10 +38,10 @@ void editNote(BuildContext context, index) {
                     decoration: const InputDecoration(
                       border: InputBorder.none,
                       filled: true,
-                      fillColor: Color(0x40D9D9D9),
+                      fillColor: AppColors.textFieldFillColor,
                       enabledBorder: OutlineInputBorder(
                         borderSide: BorderSide(
-                          color: Color.fromARGB(255, 36, 77, 113),
+                          color: AppColors.violetColor,
                           width: 0.5,
                         ),
                       ),
@@ -63,10 +62,10 @@ void editNote(BuildContext context, index) {
                     decoration: const InputDecoration(
                       border: InputBorder.none,
                       filled: true,
-                      fillColor: Color(0x40D9D9D9),
+                      fillColor: AppColors.textFieldFillColor,
                       enabledBorder: OutlineInputBorder(
                         borderSide: BorderSide(
-                          color: Color.fromARGB(255, 36, 77, 113),
+                          color: AppColors.violetColor,
                           width: 0.5,
                         ),
                       ),

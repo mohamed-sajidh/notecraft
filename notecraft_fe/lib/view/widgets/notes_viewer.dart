@@ -72,16 +72,19 @@ class NotesViewer extends StatelessWidget {
                   ),
                 );
               },
-              child: Container(
+              child: SizedBox(
                 width: width * 0.45,
-                child: Text(
-                  homeNotifier.notes[index].title,
-                  style: const TextStyle(
-                    color: AppColors.black,
-                    fontSize: 15,
-                    fontWeight: FontWeight.w500,
+                height: height * height,
+                child: Center(
+                  child: Text(
+                    homeNotifier.notes[index].title,
+                    style: const TextStyle(
+                      color: AppColors.black,
+                      fontSize: 15,
+                      fontWeight: FontWeight.w500,
+                    ),
+                    softWrap: true,
                   ),
-                  softWrap: true,
                 ),
               ),
             ),

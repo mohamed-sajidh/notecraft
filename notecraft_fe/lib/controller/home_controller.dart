@@ -2,11 +2,14 @@ import 'dart:convert';
 
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:notecraft_fe/model/note_model.dart';
 
 class HomeNotifier with ChangeNotifier {
   bool loading = false;
   List<NoteModel> notes = [];
+  // final api = dotenv.env['API_URL'];
+  final dio = Dio();
 
   HomeNotifier() {
     init();
@@ -25,7 +28,7 @@ class HomeNotifier with ChangeNotifier {
     try {
       setLoading(true);
       final response =
-          await Dio().get("http://localhost:3000/api/get-all-notes");
+          await dio.get("http://localhost:3000/api/get-all-notes");
 
       if (response.statusCode == 200) {
         Map<String, dynamic> responseData = response.data;
@@ -48,7 +51,7 @@ class HomeNotifier with ChangeNotifier {
 
   Future<void> addNote(title, content) async {
     try {
-      final response = await Dio().post(
+      final response = await dio.post(
         "http://localhost:3000/api/add-notes",
         data: {
           'title': title,
@@ -68,7 +71,7 @@ class HomeNotifier with ChangeNotifier {
   Future<void> editNote(title, content, id) async {
     try {
       final response =
-          await Dio().post("http://localhost:3000/api/update-note/$id", data: {
+          await dio.post("http://localhost:3000/api/update-note/$id", data: {
         'title': title,
         'content': content,
       });
@@ -83,7 +86,7 @@ class HomeNotifier with ChangeNotifier {
 
   Future<void> deleteNote(id) async {
     try {
-      final response = await Dio().post("http://localhost:3000/api/delete-note/$id");
+      final response = await dio.post("http://localhost:3000/api/delete-note/$id");
       if (response.statusCode == 200) {
         print(response.data);
         getNotes();
