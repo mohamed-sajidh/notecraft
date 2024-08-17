@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:notecraft_fe/controller/home_controller.dart';
 import 'package:notecraft_fe/utils/app_colors.dart';
+import 'package:notecraft_fe/view/widgets/delete_popup.dart';
+import 'package:notecraft_fe/view/widgets/edit_note.dart';
 import 'package:notecraft_fe/view/widgets/single_note_viewer.dart';
 import 'package:provider/provider.dart';
 
@@ -96,7 +98,7 @@ class NotesViewer extends StatelessWidget {
                 children: [
                   InkWell(
                     onTap: () {
-                      print("edit button pressed");
+                      editNote(context, index);
                     },
                     child: const Icon(
                       Icons.edit,
@@ -105,7 +107,7 @@ class NotesViewer extends StatelessWidget {
                   ),
                   InkWell(
                     onTap: () {
-                      print("delete button pressed");
+                      deleteNote(context, index);
                     },
                     child: const Icon(
                       Icons.delete,

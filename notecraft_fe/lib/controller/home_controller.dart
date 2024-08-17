@@ -64,4 +64,32 @@ class HomeNotifier with ChangeNotifier {
       print(e);
     }
   }
+
+  Future<void> editNote(title, content, id) async {
+    try {
+      final response =
+          await Dio().post("http://localhost:3000/api/update-note/$id", data: {
+        'title': title,
+        'content': content,
+      });
+      if (response.statusCode == 200) {
+        print(response.data);
+        getNotes();
+      }
+    } catch (e) {
+      print(e);
+    }
+  }
+
+  Future<void> deleteNote(id) async {
+    try {
+      final response = await Dio().post("http://localhost:3000/api/delete-note/$id");
+      if (response.statusCode == 200) {
+        print(response.data);
+        getNotes();
+      }
+    } catch (e) {
+      print(e);
+    }
+  }
 }

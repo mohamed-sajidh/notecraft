@@ -5,10 +5,8 @@ import 'package:notecraft_fe/view/widgets/success_snackbar.dart';
 import 'package:provider/provider.dart';
 
 final anFormKey = GlobalKey<FormState>();
-final TextEditingController _titleController = TextEditingController();
-final TextEditingController _contentController = TextEditingController();
 
-void addNote(BuildContext context) {
+void editNote(BuildContext context, index) {
   var screeenSize = MediaQuery.of(context).size;
   var width = screeenSize.width;
   var height = screeenSize.height;
@@ -17,8 +15,12 @@ void addNote(BuildContext context) {
     context: context,
     builder: (BuildContext context) {
       final homeNotifier = Provider.of<HomeNotifier>(context);
+      final TextEditingController titleController =
+          TextEditingController(text: homeNotifier.notes[index].title);
+      final TextEditingController contentController =
+          TextEditingController(text: homeNotifier.notes[index].content);
       return AlertDialog(
-        title: const Text('Add Note'),
+        title: const Text('edit Note'),
         actions: <Widget>[
           Form(
             key: anFormKey,
@@ -27,7 +29,7 @@ void addNote(BuildContext context) {
                 Padding(
                   padding: const EdgeInsets.only(top: 10, bottom: 10),
                   child: TextFormField(
-                    controller: _titleController,
+                    controller: titleController,
                     validator: (value) {
                       if (value == null || value.isEmpty) {
                         return 'required';
@@ -51,7 +53,7 @@ void addNote(BuildContext context) {
                 Padding(
                   padding: const EdgeInsets.only(top: 10, bottom: 10),
                   child: TextFormField(
-                    controller: _contentController,
+                    controller: contentController,
                     validator: (value) {
                       if (value == null || value.isEmpty) {
                         return 'required';
@@ -81,64 +83,23 @@ void addNote(BuildContext context) {
           Row(
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
-              InkWell(
-                onTap: () => Navigator.pop(context),
-                child: Container(
-                  height: height * 0.055,
-                  width: width * 0.20,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(5),
-                    border: Border.all(
-                      color: AppColors.boxBorderColor,
-                    ),
-                  ),
-                  child: const Center(
-                    child: Text(
-                      "Cancel",
-                      style: TextStyle(
-                        color: AppColors.black,
-                        // fontSize: 20,
-                        fontWeight: FontWeight.w300,
-                      ),
-                    ),
-                  ),
-                ),
+              TextButton(
+                onPressed: () => Navigator.pop(context),
+                child: const Text('Cancel'),
               ),
               SizedBox(
-                width: width * 0.05,
+                width: width * 0.03,
               ),
-              InkWell(
-                onTap: () {
-                  if (anFormKey.currentState!.validate()) {
-                    homeNotifier.addNote(
-                      _titleController.text,
-                      _contentController.text,
-                    );
-                    Navigator.pop(context);
-                    showSnackBar(context);
-                  }
+              TextButton(
+                onPressed: () {
+                  homeNotifier.editNote(
+                    titleController.text,
+                    contentController.text,
+                    homeNotifier.notes[index].id,
+                  );
+                  Navigator.pop(context);
                 },
-                child: Container(
-                  height: height * 0.055,
-                  width: width * 0.20,
-                  decoration: BoxDecoration(
-                    color: AppColors.violetColor,
-                    borderRadius: BorderRadius.circular(5),
-                    border: Border.all(
-                      color: AppColors.boxBorderColor,
-                    ),
-                  ),
-                  child: const Center(
-                    child: Text(
-                      "Add",
-                      style: TextStyle(
-                        color: AppColors.white,
-                        // fontSize: 20,
-                        fontWeight: FontWeight.w400,
-                      ),
-                    ),
-                  ),
-                ),
+                child: const Text('Ok'),
               ),
             ],
           ),
