@@ -1,12 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:notecraft_fe/controller/home_controller.dart';
 import 'package:notecraft_fe/utils/app_colors.dart';
 import 'package:notecraft_fe/view/widgets/single_note_viewer.dart';
+import 'package:provider/provider.dart';
 
 class NotesViewer extends StatelessWidget {
-  const NotesViewer({super.key});
+  const NotesViewer({super.key, required this.index});
+  final int index;
 
   @override
   Widget build(BuildContext context) {
+    final homeNotifier = Provider.of<HomeNotifier>(context);
     var screeenSize = MediaQuery.of(context).size;
     var width = screeenSize.width;
     var height = screeenSize.height;
@@ -32,12 +36,12 @@ class NotesViewer extends StatelessWidget {
                 ),
                 color: AppColors.violetColor,
               ),
-              child: const Column(
+              child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   Text(
-                    "Aug",
-                    style: TextStyle(
+                    homeNotifier.notes[index].month,
+                    style: const TextStyle(
                       color: AppColors.white,
                       fontSize: 15,
                       fontWeight: FontWeight.w500,
@@ -45,8 +49,8 @@ class NotesViewer extends StatelessWidget {
                     softWrap: true,
                   ),
                   Text(
-                    "16",
-                    style: TextStyle(
+                    homeNotifier.notes[index].date.toString(),
+                    style: const TextStyle(
                       color: AppColors.white,
                       fontSize: 15,
                       fontWeight: FontWeight.w500,
@@ -60,15 +64,17 @@ class NotesViewer extends StatelessWidget {
               onTap: () {
                 Navigator.of(context).push(
                   MaterialPageRoute(
-                    builder: (context) => const SingleNoteViewer(),
+                    builder: (context) => SingleNoteViewer(
+                      index: index,
+                    ),
                   ),
                 );
               },
               child: Container(
                 width: width * 0.45,
-                child: const Text(
-                  "Test Note",
-                  style: TextStyle(
+                child: Text(
+                  homeNotifier.notes[index].title,
+                  style: const TextStyle(
                     color: AppColors.black,
                     fontSize: 15,
                     fontWeight: FontWeight.w500,

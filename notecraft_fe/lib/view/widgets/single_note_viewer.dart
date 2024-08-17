@@ -1,11 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:notecraft_fe/controller/home_controller.dart';
 import 'package:notecraft_fe/utils/app_colors.dart';
+import 'package:provider/provider.dart';
 
 class SingleNoteViewer extends StatelessWidget {
-  const SingleNoteViewer({super.key});
+  const SingleNoteViewer({super.key, required this.index});
+  final int index;
 
   @override
   Widget build(BuildContext context) {
+    final homeNotifier = Provider.of<HomeNotifier>(context);
     var screeenSize = MediaQuery.of(context).size;
     var width = screeenSize.width;
     var height = screeenSize.height;
@@ -34,20 +38,40 @@ class SingleNoteViewer extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Container(
-                constraints: const BoxConstraints(
-                  maxWidth: 200,
-                ),
-                // color: Colors.red,
-                child: const Text(
-                  "17 AUG, 2024",
-                  style: TextStyle(
-                    color: AppColors.black,
-                    fontSize: 12,
-                    fontWeight: FontWeight.w400,
+                  constraints: const BoxConstraints(
+                    maxWidth: 200,
                   ),
-                  softWrap: true,
-                ),
-              ),
+                  child: Row(
+                    children: [
+                      Text(
+                        "${homeNotifier.notes[index].date} ",
+                        style: const TextStyle(
+                          color: AppColors.black,
+                          fontSize: 12,
+                          fontWeight: FontWeight.w400,
+                        ),
+                        softWrap: true,
+                      ),
+                      Text(
+                        "${homeNotifier.notes[index].month}, ",
+                        style: const TextStyle(
+                          color: AppColors.black,
+                          fontSize: 12,
+                          fontWeight: FontWeight.w400,
+                        ),
+                        softWrap: true,
+                      ),
+                      Text(
+                        "${homeNotifier.notes[index].year}",
+                        style: const TextStyle(
+                          color: AppColors.black,
+                          fontSize: 12,
+                          fontWeight: FontWeight.w400,
+                        ),
+                        softWrap: true,
+                      ),
+                    ],
+                  )),
               SizedBox(
                 height: height * 0.02,
               ),
@@ -55,10 +79,9 @@ class SingleNoteViewer extends StatelessWidget {
                 constraints: const BoxConstraints(
                   maxWidth: 250,
                 ),
-                // color: Colors.red,
-                child: const Text(
-                  "Test Note",
-                  style: TextStyle(
+                child: Text(
+                  homeNotifier.notes[index].title,
+                  style: const TextStyle(
                     color: AppColors.black,
                     fontSize: 20,
                     fontWeight: FontWeight.w500,
@@ -74,9 +97,9 @@ class SingleNoteViewer extends StatelessWidget {
                   maxWidth: 350,
                 ),
                 // color: Colors.red,
-                child: const Text(
-                  "This note section is for testing the height and width of the container",
-                  style: TextStyle(
+                child: Text(
+                  homeNotifier.notes[index].content,
+                  style: const TextStyle(
                     color: AppColors.black,
                     fontSize: 16,
                     fontWeight: FontWeight.w400,
