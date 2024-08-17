@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:notecraft_fe/controller/home_controller.dart';
 import 'package:notecraft_fe/utils/app_colors.dart';
+import 'package:notecraft_fe/view/widgets/success_snackbar.dart';
 import 'package:provider/provider.dart';
 
 final anFormKey = GlobalKey<FormState>();
@@ -114,6 +115,14 @@ void addNote(BuildContext context) {
                       _contentController.text,
                     );
                     Navigator.pop(context);
+                    showSnackBar(context);
+
+                //     Flushbar(
+                //   title:  "Hey Ninja",
+                //   message:  "Lorem Ipsum is simply dummy text of the printing and typesetting industry",
+                //   duration:  Duration(seconds: 3),              
+                // )..show(context);
+
                   }
                 },
                 child: Container(
