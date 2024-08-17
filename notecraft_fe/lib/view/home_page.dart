@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:notecraft_fe/utils/app_colors.dart';
-import 'package:notecraft_fe/view/widgets/single_note_viewer.dart';
+import 'package:notecraft_fe/view/widgets/notes_viewer.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -17,7 +17,7 @@ class HomePage extends StatelessWidget {
         padding: const EdgeInsets.all(8.0),
         child: ListView.separated(
           itemBuilder: (context, index) {
-            return const SingleNoteViewer();
+            return const NotesViewer();
           },
           separatorBuilder: (context, index) => const Divider(),
           itemCount: 2,

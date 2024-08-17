@@ -9,97 +9,83 @@ class SingleNoteViewer extends StatelessWidget {
     var screeenSize = MediaQuery.of(context).size;
     var width = screeenSize.width;
     var height = screeenSize.height;
-    return Padding(
-      padding: const EdgeInsets.all(8.0),
-      child: Container(
-        height: height * 0.13,
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(14),
-          border: Border.all(
-            color: AppColors.boxBorderColor,
+    return Scaffold(
+      appBar: AppBar(
+        leading: IconButton(
+          icon: const Icon(
+            Icons.arrow_back,
+            color: AppColors.black,
           ),
+          onPressed: () => Navigator.of(context).pop(),
         ),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Container(
-              width: width * 0.18,
-              decoration: const BoxDecoration(
-                borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(14),
-                  bottomLeft: Radius.circular(14),
+        // centerTitle: true,
+      ),
+      body: Container(
+        color: const Color.fromARGB(255, 243, 220, 220),
+        width: width * width,
+        child: Padding(
+          padding: const EdgeInsets.only(
+            left: 20.0,
+            top: 15.0,
+            right: 8.0,
+            bottom: 8.0,
+          ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Container(
+                constraints: const BoxConstraints(
+                  maxWidth: 200,
                 ),
-                color: AppColors.violetColor,
-              ),
-              child: const Column(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  Text(
-                    "Aug",
-                    style: TextStyle(
-                      color: AppColors.white,
-                      fontSize: 15,
-                      fontWeight: FontWeight.w500,
-                    ),
-                    softWrap: true,
+                // color: Colors.red,
+                child: const Text(
+                  "17 AUG, 2024",
+                  style: TextStyle(
+                    color: AppColors.black,
+                    fontSize: 12,
+                    fontWeight: FontWeight.w400,
                   ),
-                  Text(
-                    "16",
-                    style: TextStyle(
-                      color: AppColors.white,
-                      fontSize: 15,
-                      fontWeight: FontWeight.w500,
-                    ),
-                    softWrap: true,
-                  ),
-                ],
-              ),
-            ),
-            Container(
-              width: width * 0.45,
-              child: const Text(
-                "Test Note",
-                style: TextStyle(
-                  color: AppColors.black,
-                  fontSize: 15,
-                  fontWeight: FontWeight.w500,
-                ),
-                softWrap: true,
-              ),
-            ),
-            Container(
-              width: width * 0.16,
-              decoration: const BoxDecoration(
-                borderRadius: BorderRadius.only(
-                  topRight: Radius.circular(14),
-                  bottomRight: Radius.circular(14),
+                  softWrap: true,
                 ),
               ),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  InkWell(
-                    onTap: () {
-                      print("edit button pressed");
-                    },
-                    child: const Icon(
-                      Icons.edit,
-                      color: AppColors.blue,
-                    ),
-                  ),
-                  InkWell(
-                    onTap: () {
-                      print("delete button pressed");
-                    },
-                    child: const Icon(
-                      Icons.delete,
-                      color: AppColors.red,
-                    ),
-                  ),
-                ],
+              SizedBox(
+                height: height * 0.02,
               ),
-            ),
-          ],
+              Container(
+                constraints: const BoxConstraints(
+                  maxWidth: 250,
+                ),
+                // color: Colors.red,
+                child: const Text(
+                  "Test Note",
+                  style: TextStyle(
+                    color: AppColors.black,
+                    fontSize: 20,
+                    fontWeight: FontWeight.w500,
+                  ),
+                  softWrap: true,
+                ),
+              ),
+              SizedBox(
+                height: height * 0.02,
+              ),
+              Container(
+                constraints: const BoxConstraints(
+                  maxWidth: 350,
+                ),
+                // color: Colors.red,
+                child: const Text(
+                  "This note section is for testing the height and width of the container",
+                  style: TextStyle(
+                    color: AppColors.black,
+                    fontSize: 16,
+                    fontWeight: FontWeight.w400,
+                  ),
+                  softWrap: true,
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );
