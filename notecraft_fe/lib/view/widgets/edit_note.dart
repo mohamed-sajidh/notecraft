@@ -96,6 +96,8 @@ void editNote(BuildContext context, index) {
                     contentController.text,
                     homeNotifier.notes[index].id,
                   );
+                  titleController.clear();
+                  contentController.clear();
                   Navigator.pop(context);
                 },
                 child: const Text('Ok'),

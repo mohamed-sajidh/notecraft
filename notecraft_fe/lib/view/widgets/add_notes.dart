@@ -114,6 +114,8 @@ void addNote(BuildContext context) {
                       _titleController.text,
                       _contentController.text,
                     );
+                    _titleController.clear();
+                    _contentController.clear();
                     Navigator.pop(context);
                     showSnackBar(context);
                   }
