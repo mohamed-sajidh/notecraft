@@ -12,8 +12,15 @@ Edit Task: We can edit the that we have updated.
 1. Clone the Repository:
     git clone https://github.com/mohamed-sajidh/notecraft.git
 2. Frontend Setup (Flutter):
-    Navigate to the frontend directory: cd notecraft/frontend
-    Install dependencies: flutter pub get
+    Navigate to the frontend directory: cd notecraft/frontend,
+    Install dependencies: flutter pub get,
     Run the app: flutter run
+3. Backend Setup (Node.js):
+    Navigate to the backend directory: cd notecraft/backend,
+    Install dependencies: npm install,
+    Start the server: npm start
+4. Database Setup (PostgreSQL):
+    Create a new PostgreSQL database and user.
+    Import the schema: psql -U yourusername -d yourdatabase -f path/to/schema.sql 
       
 
