@@ -1,1 +1,1 @@
-# notecraft
+# NoteCraft 
