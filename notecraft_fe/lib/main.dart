@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (context) => HomeNotifier()),
       ],
       child: MaterialApp(
-        title: 'Notecraft',
+        title: 'Notecraft', 
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
